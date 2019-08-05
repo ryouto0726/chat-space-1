@@ -59,4 +59,5 @@ ChatSpaceのDB設計です。
 
 ### Association
 - has_many :users, through: :members
+- has_many :members
 - has_many :messages
