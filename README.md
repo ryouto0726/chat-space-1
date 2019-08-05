@@ -24,12 +24,12 @@ ChatSpaceのDB設計です。
 ## messagesテーブル
     メッセージを保存するテーブル
 
-| Column   | Type    | Options                        |
-| -------- | ------- | ------------------------------ |
-| body     | text    |                                |
-| image    | string  |                                |
-| user_id  | integer | null: false, foreign_key: true |
-| group_id | integer | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| body     | text       |                                |
+| image    | string     |                                |
+| user_id  | references | null: false, foreign_key: true |
+| group_id | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -40,10 +40,10 @@ ChatSpaceのDB設計です。
 ## membersテーブル（中間テーブル）
     どのユーザーがどのグループに関連づいているかという情報が記載されているテーブル
 
-| Column   | Type    | Options                        |
-| -------- | ------- | ------------------------------ |
-| user_id  | integer | null: false, foreign_key: true |
-| group_id | integer | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| user_id  | references | null: false, foreign_key: true |
+| group_id | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :group
