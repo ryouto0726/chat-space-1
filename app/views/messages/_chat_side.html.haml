@@ -4,17 +4,17 @@
       %p.side-header__box__user-name test-user
       %ul.side-header__box__menu
         %li.side-header__box__menu__new-group
-          %a(href="#")
+          = link_to root_path do
             %i(class="fa fa-edit")
         %li.side-header__box__menu__edit-user
-          %a(href="#")
+          = link_to root_path do
             %i(class="fa fa-cog")
   .groups
-    %a(href="#")
+    = link_to root_path do
       .group
         %p.group__group-name sample-group
         %p.group__group-lastest-message hello!
-    %a(href="#")
+    = link_to root_path do
       .group
         %p.group__group-name example
         %p.group__group-lastest-message まだメッセージがありません
