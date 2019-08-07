@@ -1,2 +1,60 @@
 @import "./reset";
 @import "./variable";
+@import "font-awesome";
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*********** flash ***********/
+.flash-box {
+  background-color: $blue;
+  font-size: 1rem;
+  color: $white;
+  text-align: center;
+}
+
+/*********** chat-side ***********/
+.chat-side {
+  color: $white;
+  width: 300px;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #2f3e51;
+  float: left;
+
+  .side-header {
+    background-color: #253141;
+    height: 100px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    &__box {
+      display: flex;
+      font-weight: bold;
+      width: 100%;
+      justify-content: space-between;
+      &__menu {
+        display: flex;
+        li {
+          margin-left: 0.3rem;
+        }
+      }
+    }
+  }
+
+  .groups {
+    padding: 20px 20px 0;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    .group{
+      margin-bottom: 40px;
+      &__group-name {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      &__group-lastest-message {
