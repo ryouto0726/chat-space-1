@@ -1,0 +1,31 @@
+.chat-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group test-group
+      %ul.main-header__left-box__member-list
+        Member：
+        %li.main-header__left-box__member-list__member test-user
+        %li.main-header__left-box__member-list__member sample-user
+    = link_to root_path do
+      .main-header__edit-btn Edit
+
+  .messages
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker test-user
+        %p.message__upper-info__date 2019/08/03(Sat) 16:32:51
+      %p.message__text こんにちは！
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker test-user
+        %p.message__upper-info__date 2019/08/03(Sat) 17:32:51
+      %p.message__text こんにちは！
+
+  .form
+    %form(class="new_message")
+      .input-box
+        %input(type="text" class="input-box__text" placeholder="type a message")/
+        %label.input-box__image{for: "message_image"}
+          %i.fa.fa-picture-o
+          %input(type="file" class="input-box__image__file" id="message_image")/
+      %input(type="submit" class="submit-btn" value="Send")/
