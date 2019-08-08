@@ -1,8 +1,9 @@
-@import "./reset";
 @import "font-awesome";
-@import "./user";
-@import "./modules/flash";
-@import "./config/colors";
+@import "config/reset";
+@import "config/colors";
+@import "modules/flash";
+@import "modules/user";
+@import "modules/group";
 
 * {
   box-sizing: border-box;
