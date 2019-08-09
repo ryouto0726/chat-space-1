@@ -11,11 +11,8 @@
           = link_to edit_user_path(current_user) do
             %i(class="fa fa-cog")
   .groups
-    = link_to root_path do
-      .group
-        %p.group__group-name sample-group
-        %p.group__group-lastest-message hello!
-    = link_to root_path do
-      .group
-        %p.group__group-name example
-        %p.group__group-lastest-message まだメッセージがありません
+    - current_user.groups.each do |group|
+      = link_to root_path do
+        .group
+          %p.group__group-name= group.name
+          %p.group__group-lastest-message メッセージはまだありません。
