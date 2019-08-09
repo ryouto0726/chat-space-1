@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   before_action :set_params, only: [:edit, :update]
 
+  def index
+    @groups = Group.all
+  end
+
   def new
     @group = Group.new
     @group.users << current_user
