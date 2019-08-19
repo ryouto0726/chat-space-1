@@ -22,10 +22,10 @@
       %p.message__text こんにちは！
 
   .form
-    %form(class="new_message")
+    = form_for [@group, @message] do |f|
       .input-box
-        %input(type="text" class="input-box__text" placeholder="type a message")/
-        %label.input-box__image{for: "message_image"}
+        = f.text_field :content, placeholder: 'type a message', class: 'input-box__text'
+        = f.label :image, class: 'input-box__image', for: 'message_image' do
           %i.fa.fa-picture-o
-          %input(type="file" class="input-box__image__file" id="message_image")/
-      %input(type="submit" class="submit-btn" value="Send")/
+          = f.file_field :image, class: 'input-box__image__file', id: 'message_image'
+      = f.submit 'Send', class: 'submit-btn'
