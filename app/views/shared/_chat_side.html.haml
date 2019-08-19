@@ -15,4 +15,4 @@
       = link_to group_messages_path(group) do
         .group
           %p.group__group-name= group.name
-          %p.group__group-lastest-message メッセージはまだありません。
+          %p.group__group-lastest-message= group.show_last_message
