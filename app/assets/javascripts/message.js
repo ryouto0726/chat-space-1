@@ -1,5 +1,13 @@
 $(function() {
 
+function formatDate(date) {
+  var date = new Date();
+  var dayOfWeek = date.getDay();
+  var dayOfWeekStr = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ][dayOfWeek];	
+  var formatDate = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}(${dayOfWeekStr}) ${date.getHours()}:${date.getMinutes()}`
+  return formatDate
+}
+
 function appendMessage(msg) {
   var html = `<div class='message'>
                 <div class='message__upper-info'>
