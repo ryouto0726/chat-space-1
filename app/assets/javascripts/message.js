@@ -33,6 +33,7 @@ function appendMessage(msg) {
     .done(function(message) {
       appendMessage(message);
       $('#message_content').val('');
+      $('#message_image').val('');
       $('.submit-btn').prop('disabled', false);
       $('.messages').animate({scrollTop: 999999}, 500, 'swing');
     })
