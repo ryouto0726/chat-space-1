@@ -4,6 +4,6 @@
     %p.message__upper-info__date= message.created_at.strftime("%Y/%m/%d(%a) %H:%M")
   .lower-message
     - if message.content.present?
-      %p.message__text
+      %p.message__text{"data-message-id": "#{message.id}"}
         = message.content
-    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+    = image_tag message.image.url, class: 'lower-message__image', "data-message-id": "#{message.id}" if message.image.present?
