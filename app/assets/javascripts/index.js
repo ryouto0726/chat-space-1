@@ -40,4 +40,23 @@ document.addEventListener("turbolinks:load", function() {
       alert('ユーザー検索に失敗しました')
     })
   });
+
+
+  $('body').on('click', '.user-search-add', function() {
+    
+    if($(this).text() === '追加') {
+      $(this).parent().remove();
+      $(this).text('削除');
+      $(this).css('color','#f05050');
+      $(this).parent().children('input').attr('name','group[user_ids][]');
+      $('.js-add-user').append($(this).parent());
+
+    } else {
+      $(this).parent().remove();
+      $(this).text('追加');
+      $(this).css('color','#38aef0');
+      $(this).parent().children('input').removeAttr('name');
+      $('#user-search-result').append($(this).parent());
+    }
+  })
 });
