@@ -5,7 +5,7 @@
       %ul
         - group.errors.full_messages.each do |message|
           %li= message
-  .chat-group-form__field
+  .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, class: 'chat-group-form__label'
     .chat-group-form__field--right
@@ -16,16 +16,18 @@
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
         %input#user-search-field.chat-group-form__input{:placeholder => "追加したいユーザー名を入力してください", :type => "text"}/
-    #user-search-result
-      .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          %label.chat-group-form__label{:for => "members"} チャットメンバー
-        .chat-group-form__field--right
-          .chat-group-users.js-add-user
-            #1304.chat-group-user.clearfix.js-chat-member
-              %input#group_user_ids{:name => "group[user_ids][]", :type => "hidden", :value => "1304"}/
-              %p.chat-group-user__name koji7
-
+      #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      %label.chat-group-form__label{:for => "members"} チャットメンバー
+    .chat-group-form__field--right
+      .chat-group-users.js-add-user
+        - group.users.each do |user|
+          .chat-group-user.clearfix.js-chat-member{id: "#{user.id}"}
+            %input{:name => "group[user_ids][]", :type => "hidden", :value => "#{user.id}"}/
+            %p.chat-group-user__name= user.name
+            - if user_signed_in? && current_user.id != user.id 
+              %a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id" => "52", "data-user-name" => "imt", style: "color: #f05050"} 削除 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
