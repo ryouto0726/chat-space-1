@@ -47,14 +47,16 @@ document.addEventListener("turbolinks:load", function() {
     if($(this).text() === '追加') {
       $(this).parent().remove();
       $(this).text('削除');
-      $(this).css('color','#f05050');
+      $(this).removeClass('chat-group-user__btn--add');
+      $(this).addClass('chat-group-user__btn--remove');
       $(this).parent().children('input').attr('name','group[user_ids][]');
       $('.js-add-user').append($(this).parent());
 
     } else {
       $(this).parent().remove();
       $(this).text('追加');
-      $(this).css('color','#38aef0');
+      $(this).removeClass('chat-group-user__btn--remove');
+      $(this).addClass('chat-group-user__btn--add');
       $(this).parent().children('input').removeAttr('name');
       $('#user-search-result').append($(this).parent());
     }
