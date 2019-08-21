@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", function() {
     var html = `<div class="chat-group-user clearfix">
                   <input id="group_user_ids" type="hidden" value="${user.id}">
                   <p class="chat-group-user__name">${user.name}</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="52" data-user-name="imt">追加</a>
+                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
                 </div>`
     $('#user-search-result').append(html);
   }

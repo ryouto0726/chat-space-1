@@ -27,7 +27,7 @@
             %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}/
             %p.chat-group-user__name= user.name
             - if user_signed_in? && current_user.id != user.id 
-              %a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id": "52", "data-user-name": "imt", style: "color: #f05050"} 削除 
+              %a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id": "#{user.id}", "data-user-name": "#{user.name}", style: "color: #f05050"} 削除 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
