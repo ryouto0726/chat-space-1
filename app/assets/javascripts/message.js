@@ -44,29 +44,34 @@ $(function() {
 
   var reloadMessages = function() {
     last_message_id = $('.message:last').data('message-id')
-
-    $.ajax({
-      type: 'get',
-      url: './api/messages',
-      dataType: 'json',
-      data: { id: last_message_id }
-    })
-    .done(function(messages) {
-      var insertHTML = '';
-      $.each(messages, function(i, message) {
-        insertHTML += buildMessageHTML(message)  
+    var urlRegex = new RegExp("groups/\[0-9]{1,}/messages")
+    var currentUrl = location.pathname
+    
+    if( urlRegex.test(currentUrl) ) {
+      $.ajax({
+        type: 'get',
+        url: './api/messages',
+        dataType: 'json',
+        data: { id: last_message_id }
       })
 
-      if(messages.length !== 0) {
-        $('.messages').append(insertHTML);
-        $('.messages').animate({scrollTop: 999999}, 500, 'swing');
-      }
-      $('.submit-btn').prop('disabled', false);
-    })
-    .fail(function() {
-      console.log('error');
-      $('.submit-btn').prop('disabled', false);
-    });
+      .done(function(messages) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildMessageHTML(message)  
+        })
+
+        if(messages.length !== 0) {
+          $('.messages').append(insertHTML);
+          $('.messages').animate({scrollTop: 999999}, 500, 'swing');
+        }
+        $('.submit-btn').prop('disabled', false);
+      })
+      .fail(function() {
+        console.log('error');
+        $('.submit-btn').prop('disabled', false);
+      });
+    }
   };
 
   var buildMessageHTML = function(message) {
