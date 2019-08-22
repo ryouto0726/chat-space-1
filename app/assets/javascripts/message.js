@@ -1,7 +1,7 @@
 $(function() {
 
   function appendMessage(msg) {
-    var html = `<div class='message'>
+    var html = `<div class='message' data-message-id="${msg.id}">
                   <div class='message__upper-info'>
                     <p class="message__upper-info__talker">${msg.name}</p>
                     <p class="message__upper-info__date">${msg.time}</p>
