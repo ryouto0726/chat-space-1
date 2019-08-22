@@ -56,13 +56,10 @@ $(function() {
       })
 
       .done(function(messages) {
-        var insertHTML = '';
-        $.each(messages, function(i, message) {
-          insertHTML += buildMessageHTML(message)  
-        })
-
         if(messages.length !== 0) {
-          $('.messages').append(insertHTML);
+          messages.forEach(function (message) {
+            appendMessage(message);
+          });
           $('.messages').animate({scrollTop: 999999}, 500, 'swing');
         }
         $('.submit-btn').prop('disabled', false);
@@ -72,43 +69,6 @@ $(function() {
         $('.submit-btn').prop('disabled', false);
       });
     }
-  };
-
-  var buildMessageHTML = function(message) {
-    
-    if (message.content && message.image.url) {
-      var html = `<div class="message" data-message-id="${message.id}">
-                    <div class="message__upper-info">
-                      <p class="message__upper-info__talker">${message.user_name}</p>
-                      <p class="message__upper-info__date">${message.created_at}</p>
-                    </div>
-                    <div class="lower-message">
-                      <p class="message__text">${message.content}</p>
-                      <img src="${message.image.url}" class="lower-message__image" >
-                    </div>
-                  </div>`
-    } else if (message.content) {
-      var html = `<div class="message" data-message-id="${message.id}">
-                    <div class="message__upper-info">
-                      <p class="message__upper-info__talker">${message.user_name}</p>
-                      <p class="message__upper-info__date">${message.created_at}</p>
-                    </div>
-                    <div class="lower-message">
-                      <p class="message__text">${message.content}</p>
-                    </div>
-                  </div>`
-    } else if (message.image.url) {
-      var html = `<div class="message" data-message-id="${message.id}">
-                    <div class="message__upper-info">
-                      <p class="message__upper-info__talker">${message.user_name}</p>
-                      <p class="message__upper-info__date">${message.created_at}</p>
-                    </div>
-                    <div class="lower-message">
-                      <img src="${message.image.url}" class="lower-message__image" >
-                    </div>
-                  </div>`
-    };
-    return html;
   };
 
   setInterval(reloadMessages, 5000);
